@@ -25,3 +25,5 @@ services:
       - ./.s3:/mnt/minio_data # Optional, if FastAPI needs raw access
     depends_on:
       - minio
+    privileged: true  # allows use of /dev/fuse etc. if needed
+

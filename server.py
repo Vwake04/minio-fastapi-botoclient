@@ -6,7 +6,7 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    with open("/mnt/minio_data/fastapi-test.txt", "w") as f:
+    with open("/mnt/mybucket/fastapi-test.txt", "w") as f:
         f.write("Hello World")
 
     return {"message": "Hello World"}

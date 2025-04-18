@@ -46,3 +46,4 @@ logs/
 
 # MinIO data
 /mnt/minio_data/
+.s3
