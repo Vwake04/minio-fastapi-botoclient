@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  minio:
+    image: minio/minio
+    container_name: minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    command: server /data --console-address ":9001"
+    volumes:
+      - ./.s3:/data # Host volume for shared storage
+
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile.fastapi
+    container_name: fastapi
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./.s3:/mnt/minio_data # Optional, if FastAPI needs raw access
+    depends_on:
+      - minio
