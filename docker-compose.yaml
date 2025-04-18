@@ -22,8 +22,8 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./.s3:/mnt/minio_data # Optional, if FastAPI needs raw access
+      - ./server.py:/app/server.py
     depends_on:
       - minio
-    privileged: true  # allows use of /dev/fuse etc. if needed
+    privileged: true # allows use of /dev/fuse etc. if needed
 

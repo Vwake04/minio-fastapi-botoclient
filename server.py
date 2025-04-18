@@ -22,5 +22,5 @@ def botoclient():
     )
 
     # Get the fastapi-test.txt file from the s3 bucket
-    response = s3.get_object(Bucket="test", Key="fastapi-test.txt")
+    response = s3.get_object(Bucket="mybucket", Key="fastapi-test.txt")
     return response["Body"].read().decode("utf-8")
